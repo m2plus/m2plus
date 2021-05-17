@@ -12,259 +12,6 @@ jQuery.fn.removeAttrs = function () {
 	});
 }
 
-var skrollrInst;
-
-var skrollerDynamic = function () {
-	if ($('.touch').length || $('.page-404').length) {
-		return;
-	}
-
-	var windowHeight = $(window).height(),
-		sectionHomeHeight = $('.section-home').height(),
-		sectionMainHeight = $('.section-main').height(),
-		sectionBlackHeight = $('.section-black').height(),
-		sectionWhiteHeight = $('.section-white').height(),
-		footerHeight = $('footer').height(),
-
-		sectionAboutVideoHeight = $('.top-video').height(),
-		sectionAboutTrustHeight = $('.about-trust').height();
-
-
-
-	if ($('#bg-animation').length) {
-
-
-		var attrs = {};
-		attrs['data-' + ( windowHeight + sectionMainHeight - 200)] = 'background-color:rgb(255,255,255);';
-		attrs['data-' + (windowHeight + sectionMainHeight)] = 'background-color:rgb(27,27,27);';
-		attrs['data-' + ($(document).height() - windowHeight - sectionWhiteHeight)] = 'background-color:rgb(27,27,27);';
-		attrs['data-' + ($(document).height() - windowHeight - sectionWhiteHeight / 2)] = 'background-color:rgb(255,255,255);';
-
-		$('#bg-animation').attr(attrs);
-
-		var attrsWave = {};
-		attrsWave['data-' + ($(document).height() - windowHeight - footerHeight - 110)] = 'transform:translate(0,0px);';
-		attrsWave['data-' + ($(document).height() - windowHeight)] = 'transform:translate(0, 343px);';
-
-		$('.articles-wrap .music-wave').attr(attrsWave);
-
-		var attrsLang = {};
-		attrsLang['data-' + (windowHeight - 50)] = 'color:rgb(255,255,255)';
-		attrsLang['data-' + (windowHeight)] = 'color:rgb(27,27,27);';
-		attrsLang['data-' + (sectionHomeHeight + sectionMainHeight - 50)] = 'color:rgb(27,27,27);';
-		attrsLang['data-' + (sectionHomeHeight + sectionMainHeight + 50)] = 'color:rgb(255,255,255);';
-		attrsLang['data-' + (sectionHomeHeight + sectionMainHeight + sectionBlackHeight - 200)] = 'color:rgb(255,255,255);';
-		attrsLang['data-' + (sectionHomeHeight + sectionMainHeight + sectionBlackHeight + 100)] = 'color:rgb(27,27,27);';
-		$('.lang a').attr(attrsLang);
-
-		var attrsLogo = {};
-		attrsLogo['data-' + 100] = 'opacity:0;';
-		attrsLogo['data-' + 150] = 'opacity:1;color:rgb(27,27,27);';
-		attrsLogo['data-' + (sectionHomeHeight + sectionMainHeight - 50)] = 'color:rgb(27,27,27);';
-		attrsLogo['data-' + (sectionHomeHeight + sectionMainHeight + 50)] = 'color:rgb(255,255,255);';
-		attrsLogo['data-' + ($(document).height() - windowHeight - sectionWhiteHeight)] = 'color:rgb(255,255,255);';
-		attrsLogo['data-' + ($(document).height() - windowHeight - sectionWhiteHeight / 2)] = 'color:rgb(27,27,27);';
-		attrsLogo['data-' + ($(document).height() - windowHeight)] = 'color:rgb(255,255,255);';
-		$('.logo a').attr(attrsLogo);
-
-		var attrsWave = {};
-		attrsWave['data-' + (windowHeight - 150)] = 'background-color:rgb(255,255,255)';
-		attrsWave['data-' + (windowHeight - 50)] = 'background-color:rgb(27,27,27);';
-		attrsWave['data-' + (sectionHomeHeight + sectionMainHeight - 50)] = 'background-color:rgb(27,27,27);';
-		attrsWave['data-' + (sectionHomeHeight + sectionMainHeight + 50)] = 'background-color:rgb(255,255,255);';
-		attrsWave['data-' + (sectionHomeHeight + sectionMainHeight + sectionBlackHeight - 200)] = 'background-color:rgb(255,255,255);';
-		attrsWave['data-' + (sectionHomeHeight + sectionMainHeight + sectionBlackHeight + 100)] = 'background-color:rgb(27,27,27);';
-		$('.music-wave span').attr(attrsWave);
-
-		var attrsBorder = {};
-		attrsBorder['data-' + ($(window).height() / 4)] = 'border-color:rgb(255,255,255)';
-		attrsBorder['data-' + ($(window).height() / 3)] = 'border-color:rgb(204,204,204);';
-		attrsBorder['data-' + ($(document).height() - windowHeight - footerHeight - 110)] = 'transform:translate(0,0px);';
-		attrsBorder['data-' + ($(document).height() - windowHeight)] = 'transform:translate(0, -343px);';
-		$('.articles').attr(attrsBorder);
-
-	} else {
-
-		if ($('#bg-animation-2').length) {
-
-			var attrs = {};
-			attrs['data-0'] = 'background-color:rgb(255,255,255);';
-			attrs['data-' + (sectionAboutVideoHeight + sectionMainHeight / 3 )] = 'background-color:rgb(255,255,255);';
-			attrs['data-' + (sectionAboutVideoHeight + sectionMainHeight / 2)] = 'background-color:rgb(27,27,27);';
-			attrs['data-' + (sectionAboutVideoHeight + sectionMainHeight + sectionBlackHeight + sectionAboutTrustHeight / 4)] = 'background-color:rgb(27,27,27);';
-			attrs['data-' + (sectionAboutVideoHeight + sectionMainHeight + sectionBlackHeight + sectionAboutTrustHeight / 3)] = 'background-color:rgb(255,255,255);';
-			$('#bg-animation-2').removeAttrs().attr(attrs);
-
-			var attrs2 = {};
-			attrs2['data-0'] = 'opacity:0;';
-			attrs2['data-' + (sectionAboutVideoHeight + sectionMainHeight / 3 )] = 'opacity:0;';
-			attrs2['data-' + (sectionAboutVideoHeight + sectionMainHeight / 2)] = 'opacity:1;';
-			attrs2['data-' + (sectionAboutVideoHeight + sectionMainHeight + sectionBlackHeight + sectionAboutTrustHeight / 4)] = 'opacity:1;';
-			attrs2['data-' + (sectionAboutVideoHeight + sectionMainHeight + sectionBlackHeight + sectionAboutTrustHeight / 3)] = 'opacity:0;';
-			$('#map-animation').removeAttrs().attr(attrs2);
-
-			var attrsWave = {};
-			attrsWave['data-' + ($(document).height() - windowHeight - footerHeight - 110)] = 'transform:translate(0,0px);';
-			attrsWave['data-' + ($(document).height() - windowHeight)] = 'transform:translate(0, 343px);';
-			$('.articles-wrap .music-wave').removeAttrs().attr(attrsWave);
-
-			attrsWave = {};
-			if ($('.top-video').hasClass('played')) {
-				attrsWave['data-0'] = 'background-color:rgb(27,27,27)';
-			} else {
-				attrsWave['data-0'] = 'background-color:rgb(255,255,255)';
-				attrsWave['data-' + (sectionAboutVideoHeight - 100)] = 'background-color:rgb(255,255,255);';
-				attrsWave['data-' + (sectionAboutVideoHeight)] = 'background-color:rgb(27,27,27);';
-			}
-
-			attrsWave['data-' + (sectionAboutVideoHeight + sectionMainHeight - 200 )] = 'background-color:rgb(27,27,27);';
-			attrsWave['data-' + (sectionAboutVideoHeight + sectionMainHeight - 100)] = 'background-color:rgb(255,255,255);';
-			attrsWave['data-' + (sectionAboutVideoHeight + sectionMainHeight + sectionBlackHeight + sectionAboutTrustHeight)] = 'background-color:rgb(255,255,255);';
-			attrsWave['data-' + (sectionAboutVideoHeight + sectionMainHeight + sectionBlackHeight + sectionAboutTrustHeight + 100)] = 'background-color:rgb(27,27,27);';
-			$('.music-wave span').removeAttrs().attr(attrsWave);
-
-
-			var attrsLang = {},
-				attrsLangDrop = {};
-
-			attrsLang['data-0'] = 'color:rgb(255,255,255);';
-			attrsLang['data-' + (sectionAboutVideoHeight - 100)] = 'color:rgb(255,255,255);';
-			attrsLang['data-' + (sectionAboutVideoHeight)] = 'color:rgb(0,0,0);';
-			attrsLang['data-' + (sectionAboutVideoHeight + sectionMainHeight - 200 )] = 'color:rgb(0,0,0);';
-			attrsLang['data-' + (sectionAboutVideoHeight + sectionMainHeight - 100)] = 'color:rgb(255,255,255);';
-			attrsLang['data-' + (sectionAboutVideoHeight + sectionMainHeight + sectionBlackHeight + sectionAboutTrustHeight)] = 'color:rgb(255,255,255);';
-			attrsLang['data-' + (sectionAboutVideoHeight + sectionMainHeight + sectionBlackHeight + sectionAboutTrustHeight + 100)] = 'color:rgb(0,0,0);';
-
-
-			if (!$('.top-video').hasClass('played')) {
-				attrsLangDrop['data-0'] = 'color:rgb(255,255,255);';
-				attrsLangDrop['data-' + (sectionAboutVideoHeight - 100)] = 'color:rgb(255,255,255);';
-				attrsLangDrop['data-' + (sectionAboutVideoHeight)] = 'color:rgb(0,0,0);';
-			} else {
-				attrsLangDrop['data-0'] = 'color:rgb(0,0,0);';
-			}
-			attrsLangDrop['data-' + (sectionAboutVideoHeight + sectionMainHeight - 200)] = 'color:rgb(0,0,0);';
-			attrsLangDrop['data-' + (sectionAboutVideoHeight + sectionMainHeight - 100)] = 'color:rgb(255,255,255);';
-			attrsLangDrop['data-' + (sectionAboutVideoHeight + sectionMainHeight + sectionBlackHeight + sectionAboutTrustHeight)] = 'color:rgb(255,255,255);';
-			attrsLangDrop['data-' + (sectionAboutVideoHeight + sectionMainHeight + sectionBlackHeight + sectionAboutTrustHeight + 100)] = 'color:rgb(0,0,0);';
-
-			$('.lang_i > a').removeAttrs().attr(attrsLang);
-			$('.lang ul li a').removeAttrs().attr(attrsLangDrop);
-
-			var attrsLogo = {};
-			if (!$('.top-video').hasClass('played')) {
-				attrsLogo['data-0'] = 'color:rgb(255,255,255);';
-				attrsLogo['data-100'] = 'color:rgb(27,27,27);';
-			} else {
-				attrsLogo['data-0'] = 'color:rgb(27,27,27);';
-			}
-			attrsLogo['data-' + (sectionAboutVideoHeight + sectionMainHeight / 3 )] = 'color:rgb(27,26,27);';
-			attrsLogo['data-' + (sectionAboutVideoHeight + sectionMainHeight / 2)] = 'color:rgb(255,255,255);';
-			attrsLogo['data-' + (sectionAboutVideoHeight + sectionMainHeight + sectionBlackHeight)] = 'color:rgb(255,255,255);';
-			attrsLogo['data-' + (sectionAboutVideoHeight + sectionMainHeight + sectionBlackHeight + 200)] = 'color:rgb(27,27,27);';
-			attrsLogo['data-' + ($(document).height() - windowHeight - 110)] = 'color:rgb(27,27,27);';
-			attrsLogo['data-' + ($(document).height() - windowHeight)] = 'color:rgb(255,255,255);';
-
-			$('.logo a').removeAttrs().attr(attrsLogo);
-
-
-			var attrsBorder = {};
-			attrsBorder['data-0'] = 'border-color:rgb(204,204,204)';
-			attrsBorder['data-' + (sectionAboutVideoHeight + sectionMainHeight / 3 )] = 'border-color:rgb(204,204,204)';
-			attrsBorder['data-' + (sectionAboutVideoHeight + sectionMainHeight / 2 )] = 'border-color:rgb(255,255,255)';
-			attrsBorder['data-' + (sectionAboutVideoHeight + sectionMainHeight + sectionBlackHeight)] = 'border-color:rgb(255,255,255)';
-			attrsBorder['data-' + (sectionAboutVideoHeight + sectionMainHeight + sectionBlackHeight + 200)] = 'border-color:rgb(204,204,204)';
-			attrsBorder['data-' + ($(document).height() - windowHeight - footerHeight - 110)] = 'transform:translate(0,0px);';
-			attrsBorder['data-' + ($(document).height() - windowHeight)] = 'transform:translate(0, -343px);';
-
-			$('.articles').removeAttrs().attr(attrsBorder);
-
-		} else {
-
-
-			var topVideo = $('.top-video');
-			if (topVideo.length && !topVideo.hasClass('played')) {
-
-
-
-				var attrsLang = {};
-				attrsLang['data-' + (windowHeight - 50)] = 'color:rgb(255,255,255)';
-				attrsLang['data-' + (windowHeight)] = 'color:rgb(27,27,27);';
-
-				$('.lang a').removeAttrs().attr(attrsLang);
-
-				var attrsLogo = {};
-				attrsLogo['data-0'] = 'color:rgb(255,255,255);';
-				attrsLogo['data-' + 150] = 'color:rgb(27,27,27);';
-				attrsLogo['data-' + ($(document).height() - windowHeight - footerHeight - 150 )] = 'color:rgb(27,27,27);';
-				attrsLogo['data-' + ($(document).height() - windowHeight - footerHeight)] = 'color:rgb(255,255,255);';
-				$('.logo a').removeAttrs().attr(attrsLogo);
-
-				var attrsBorder = {};
-				attrsBorder['data-0'] = 'border-color:rgb(204,204,204);';
-				attrsBorder['data-' + ($(document).height() - windowHeight - footerHeight - 110)] = 'transform:translate(0,0px);';
-				attrsBorder['data-' + ($(document).height() - windowHeight)] = 'transform:translate(0, -343px);';
-				$('.articles').removeAttrs().attr(attrsBorder);
-
-				var attrsWave = {};
-				attrsWave['data-' + ($(document).height() - windowHeight - footerHeight - 110)] = 'transform:translate(0,0px);';
-				attrsWave['data-' + ($(document).height() - windowHeight)] = 'transform:translate(0, 343px);';
-
-				$('.articles-wrap .music-wave').removeAttrs().attr(attrsWave);
-
-				attrsWave = {};
-				attrsWave['data-0'] = 'background-color:rgb(255,255,255)';
-				attrsWave['data-' + (windowHeight - 50)] = 'background-color:rgb(27,27,27);';
-
-				$('.music-wave span').attr(attrsWave);
-
-			} else {
-
-				var attrsLang = {};
-				attrsLang['data-0'] = 'color:rgb(27,27,27)';
-				$('.lang a').removeAttrs().attr(attrsLang);
-
-				var attrsLogo = {};
-				attrsLogo['data-0'] = 'color:rgb(27,27,27);';
-				attrsLogo['data-' + ($(document).height() - windowHeight - 150 )] = 'color:rgb(27,27,27);';
-				attrsLogo['data-' + ($(document).height() - windowHeight)] = 'color:rgb(255,255,255);';
-				$('.logo a').removeAttrs().attr(attrsLogo);
-
-				var attrsBorder = {};
-				attrsBorder['data-0'] = 'border-color:rgb(204,204,204);';
-				attrsBorder['data-' + ($(document).height() - windowHeight - footerHeight - 110)] = 'transform:translate(0,0px);';
-				attrsBorder['data-' + ($(document).height() - windowHeight)] = 'transform:translate(0, -343px);';
-				$('.articles').removeAttrs().attr(attrsBorder);
-
-				var attrsWave = {};
-				attrsWave['data-' + ($(document).height() - windowHeight - footerHeight - 110)] = 'transform:translate(0,0px);';
-				attrsWave['data-' + ($(document).height() - windowHeight)] = 'transform:translate(0, 343px);';
-
-				$('.articles-wrap .music-wave').removeAttrs().attr(attrsWave);
-
-				attrsWave = {};
-				attrsWave['data-0'] = 'background-color:rgb(27,27,27)';
-				$('.music-wave span').attr(attrsWave);
-
-			}
-
-			if (topVideo.length && topVideo.hasClass('played')) {
-
-				var attrsLang = {};
-				attrsLang['data-0'] = 'color:rgb(255,255,255)';
-				attrsLang['data-50'] = 'color:rgb(27,27,27)';
-				$('.lang a').removeAttrs().attr(attrsLang);
-			}
-		}
-	}
-	if (skrollrInst == undefined) {
-		skrollrInst = skrollr.init({
-			forceHeight: false
-		});
-	} else {
-		skrollrInst.refresh();
-	}
-}
 
 var touch = $('.touch').length;
 
@@ -770,8 +517,6 @@ $(function () {
 			}
 		});
 
-		$(window).load(function () {
-			skrollerDynamic();
 		});
 
 		$('.btn-next').on('click', function (e) {
@@ -843,9 +588,7 @@ $(function () {
 		if (!$('#bg-animation-2').length) {
 			$('.lang').addClass('drop-black');
 		}
-		setTimeout(function () {
-			skrollerDynamic();
-		}, 800);
+
 	});
 
 	if (touch) {
@@ -886,28 +629,7 @@ $(function () {
 					}
 				});
 
-				isotopeResizeSizeCalc(productList);
-				setTimeout(function () {
-					skrollerDynamic();
-				}, 1500);
-
-				setTimeout(function () {
-					productList.height(productList.height() - 2);
-					$(window).resize();
-
-				}, 100);
-
-				if (!touch) {
-					productList.isotope('on', 'arrangeComplete', function () {
-						setTimeout(function () {
-							productList.removeClass('white');
-							productList.height(productList.height() - 1);
-						}, 400);
-						setTimeout(function () {
-							skrollerDynamic();
-						}, 1000)
-					});
-				}
+				
 				productList.find('.item').addClass('vis');
 			});
 		}
@@ -937,12 +659,7 @@ $(function () {
 			});
 			if (!touch) {
 				blogList.isotope('on', 'arrangeComplete', function () {
-					setTimeout(function () {
-						blogList.height(blogList.height() - 1);
-						skrollerDynamic();
-					}, 1000);
-				});
-			}
+					setTimeout(function () 
 			blogList.find('.item').addClass('vis');
 		});
 	}
@@ -1002,7 +719,7 @@ $(function () {
 				$('.lang').addClass('drop-black');
 			}
 			$('.btn-play-2').removeClass('pause');
-			setTimeout(skrollerDynamic, 1000);
+			
 
 		} else {
 			if (!touch) {
@@ -1030,7 +747,7 @@ $(function () {
 			if (!$('#bg-animation-2').length) {
 				$('.lang').addClass('drop-black');
 			}
-			setTimeout(skrollerDynamic, 1500);
+			
 
 		});
 		$('.top-video__play').on('click', function (e) {
@@ -1042,9 +759,7 @@ $(function () {
 			$('.lang').removeClass('drop-black');
 			$('.btn-play-2').removeClass('pause');
 			videoBox.get(0).play();
-			setTimeout(function () {
-				skrollerDynamic();
-			}, 1000);
+			setTimeout(function () 
 		});
 	}
 
@@ -1344,9 +1059,7 @@ $(function () {
 	$('.about-honors__list__item .close').on('click', function (e) {
 		e.preventDefault();
 		$('.about-honors__list__item').slideUp(function () {
-			setTimeout(function () {
-				skrollerDynamic();
-			}, 500)
+			setTimeout(function () 
 		});
 		$('.about-honors__right .btn-transparent').removeClass('active');
 	});
@@ -1359,9 +1072,7 @@ $(function () {
 		}
 		$('.price-post_i').stop(true, true).css('display', 'none');
 		$(el.attr('href')).stop(true, true).fadeIn();
-		setTimeout(function () {
-			skrollerDynamic();
-		}, 1000);
+		setTimeout(function () 
 	});
 
 
