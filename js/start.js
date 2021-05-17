@@ -931,15 +931,6 @@ $(function () {
 		img.src = el.attr('data-src');
 	});
 
-	if ($('.img-box').length) {
-		$.when.apply($, promises).then(function () {
-			setTimeout(function () {
-				skrollerDynamic();
-			}, 1500);
-		});
-	}
-
-
 
 	$('.contact-form_i input[type="text"], .contact-form_i textarea, .subscribe__input input').add('.js-price-calc-form').find('input[type="text"]')
 		.on('focus', function () {
